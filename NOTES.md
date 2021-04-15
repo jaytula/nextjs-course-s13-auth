@@ -14,4 +14,7 @@
 - Custom Data
 - Secret Signing Key (only known by server)
 
+## Lesson 215. Using the "next-auth" Library
 
+- Need to bring our own signup api route
+- Need to bring own user verification logic
