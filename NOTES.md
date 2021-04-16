@@ -18,3 +18,6 @@
 
 - Need to bring our own signup api route
 - Need to bring own user verification logic
+
+## Lesson 216. Adding A User Signup API Route
+
