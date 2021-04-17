@@ -1,15 +1,33 @@
-import { useState } from 'react';
+import { FormEventHandler, useState } from 'react';
 import classes from './auth-form.module.css';
 
 function AuthForm() {
   const [isLogin, setIsLogin] = useState(true);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   function switchAuthModeHandler() {
     setIsLogin((prevState) => !prevState);
   }
 
+  const submitHandler: FormEventHandler = event => {
+    event.preventDefault();
+
+    fetch(`/api/${isLogin ? 'login' : 'signup'}`, {
+      method: 'POST',
+      body: JSON.stringify({
+        email,
+        password
+      })
+    })
+    .then(res => res.json())
+    .then(data => {
+      console.log({data});
+    })
+  }
+
   return (
-    <section className={classes.auth}>
+    <section className={classes.auth} onSubmit={submitHandler}>
       <h1>{isLogin ? 'Login' : 'Sign Up'}</h1>
       <form>
         <div className={classes.control}>
