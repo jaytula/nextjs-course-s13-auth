@@ -3,6 +3,11 @@ import { hashPassword } from "../../../lib/auth";
 import { connectToDatabase } from "../../../lib/db";
 
 const handler: NextApiHandler = async (req, res) => {
+  if(req.method !== 'POST') {
+    res.status(405).json({message: 'Method not allowed'})
+    return;
+  }
+
   const { email, password } = req.body;
 
   if (
