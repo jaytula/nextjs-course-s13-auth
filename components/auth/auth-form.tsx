@@ -1,11 +1,12 @@
 import { FormEventHandler, useState } from "react";
+import { signIn } from "next-auth/client";
 import classes from "./auth-form.module.css";
 
 const createUser = async (email: string, password: string) => {
   const response = await fetch(`/api/auth/signup`, {
     method: "POST",
     headers: {
-      'Content-Type': 'application/json'
+      "Content-Type": "application/json",
     },
     body: JSON.stringify({
       email,
@@ -33,6 +34,15 @@ function AuthForm() {
     event.preventDefault();
 
     if (isLogin) {
+      const result = await signIn("credentials", {
+        redirect: false,
+        email,
+        password,
+      });
+
+      if(!result.error) {
+        // set some auth state
+      }
     } else {
       try {
         const result = await createUser(email, password);
