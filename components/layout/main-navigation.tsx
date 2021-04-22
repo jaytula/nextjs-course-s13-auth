@@ -1,13 +1,19 @@
 import Link from "next/link";
-import { useSession } from "next-auth/client";
+import { useSession, signOut } from "next-auth/client";
 
 import classes from "./main-navigation.module.css";
+import { MouseEventHandler } from "react";
 
 function MainNavigation() {
   const [session, loading] = useSession();
 
   console.log(loading);
   console.log(session);
+
+  const logoutHandler: MouseEventHandler<HTMLButtonElement> = (event) => {
+    event.preventDefault();
+    signOut();
+  }
 
   return (
     <header className={classes.header}>
@@ -30,7 +36,7 @@ function MainNavigation() {
           ) : null}
           {session ? (
             <li>
-              <button>Logout</button>
+              <button onClick={logoutHandler}>Logout</button>
             </li>
           ) : null}
         </ul>
