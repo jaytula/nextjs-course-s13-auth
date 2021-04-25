@@ -7,9 +7,6 @@ import { MouseEventHandler } from "react";
 function MainNavigation() {
   const [session, loading] = useSession();
 
-  console.log(loading);
-  console.log(session);
-
   const logoutHandler: MouseEventHandler<HTMLButtonElement> = (event) => {
     event.preventDefault();
     signOut();

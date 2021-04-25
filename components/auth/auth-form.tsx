@@ -46,7 +46,6 @@ function AuthForm() {
     } else {
       try {
         const result = await createUser(email, password);
-        console.log(result);
       } catch (error) {
         console.log(error);
       }
