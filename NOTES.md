@@ -21,3 +21,7 @@
 
 ## Lesson 216. Adding A User Signup API Route
 
+## Lesson 228. Analyzing Further Authentication Requirements
+
+- `next-auth/client` is mostly for frontend but we also have
+  need to protect API rotues
