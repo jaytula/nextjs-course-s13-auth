@@ -5,6 +5,7 @@ import { connectToDatabase } from "../../../lib/db";
 
 const handler: NextApiHandler = async (req, res) => {
   if (req.method !== "PATCH") {
+    res.status(405).end();
     return;
   }
 
