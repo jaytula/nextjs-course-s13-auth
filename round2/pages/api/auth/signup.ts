@@ -28,6 +28,14 @@ const handler: NextApiHandler = async (req, res) => {
   const client = await connectToDatabase();
   const usersCollection = client.db().collection("users");
 
+  const existingUser = await usersCollection.findOne({email})
+
+  if(existingUser) {
+    res.status(422).json({message: 'User exists already'})
+    client.close();
+    return;
+  }
+
   const hashedPassword = await hashPassword(password);
   const newUser = {
     email,
