@@ -1,4 +1,4 @@
-import { useSession } from "next-auth/client";
+import { signOut, useSession } from "next-auth/client";
 import Link from "next/link";
 
 import classes from "./main-navigation.module.css";
@@ -29,7 +29,7 @@ function MainNavigation() {
           )}
           {session && (
             <li>
-              <button>Logout</button>
+              <button onClick={() => signOut()}>Logout</button>
             </li>
           )}
         </ul>
