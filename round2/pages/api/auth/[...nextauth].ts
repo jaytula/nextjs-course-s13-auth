@@ -9,12 +9,10 @@ export default NextAuth({
   },
   providers: [
     Providers.Credentials({
-      name: 'Credentials',
       authorize: async (credentials: {email: string, password: string}) => {
         const client = await connectToDatabase();
         const usersCollection = client.db().collection('users');
         const user = await usersCollection.findOne({email: credentials.email})
-
         
         if(!user) {
           client.close();
