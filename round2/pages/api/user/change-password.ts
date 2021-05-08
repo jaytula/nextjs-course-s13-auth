@@ -1,5 +1,4 @@
 import { compare, hash } from "bcryptjs";
-import { resolveSoa } from "dns";
 import { NextApiHandler } from "next";
 import { getSession } from "next-auth/client";
 import { connectToDatabase } from "../../../lib/db";
